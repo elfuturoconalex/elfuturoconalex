@@ -20,19 +20,42 @@ I'm not only the professional who knows Cisco or designs network and data center
 
 ## A new chapter: from networks to AI agents
 
-Today I'm taking a step I wouldn't have imagined a few months ago: I'm learning to build AI agents and deploy them on AWS.
+Today I'm taking a step I wouldn't have imagined a few months ago: I'm building AI agents and deploying them on AWS.
 
 I started with an AWS course. When I reached the final project — a full banking architecture with multiple regions, networking, databases, and high availability — I realized I first needed stronger foundations. So I decided to start with something concrete: a research agent that receives a topic, searches the internet, summarizes the information, and saves a report, with no interface and no human intervention.
 
-What makes this interesting is that I started practically from zero in programming. I didn't know Python, had never seriously used the terminal, and didn't know what Git was. In a few days I set up my computer with developer tools, learned Git and GitHub, managed my own API keys securely, and wrote my first programs. Today my first agent runs locally: it decides on its own what to search for, runs several searches, writes the report, and tells me how many resources it used and how much each run cost.
+What makes this interesting is that I started practically from zero in programming. I didn't know Python, had never seriously used the terminal, and didn't know what Git was. In a few days I set up my computer with developer tools, learned Git and GitHub, managed my own API keys securely, and wrote my first programs.
 
 Along the way I also learned something beyond code. I made real mistakes — like accidentally exposing an API key in a screenshot — and learned to fix them immediately and not repeat them. I document every step in a learning log: not just what I do, but what I learn and the problems I solve, because I believe how you think and solve problems matters as much as the result.
+
+### What I've built so far
+
+**1. Research Agent.** It decides on its own what to search for, runs several searches, and writes a report where every claim cites its source. It started on my computer and now runs on AWS with Lambda, API Gateway, and S3. Reviewing its reports taught me my first big lesson: if you don't force an AI to cite every fact and to say "I didn't find this," it fills the gaps with irrelevant information.
+
+**2. Internal Support Agent.** It answers employee questions using a fictional company's documents — vacation, travel expenses, policies — with RAG on Amazon Bedrock. It cites which document the answer came from, and when the answer isn't there, it says "I don't know" instead of inventing. I built an automated exam of 25 questions, including trick questions, and it scored 25/25. Getting there meant calibrating a confidence threshold with real data, catching a trick question about salaries that the AI almost answered, and hunting down a single misplaced letter in my code that dropped the whole exam to zero.
+
+**3. Telegram Ordering Agent.** A fictional neighborhood store takes orders by chat. The customer writes the way they talk — "give me 2 kilos of tortillas and a soda" — and the agent checks the real catalog, builds the order, asks for address and payment, and saves it with a folio number. This one taught me the most:
+
+- Without a catalog, the AI invented products the store didn't sell.
+- It told customers "your order is confirmed" without having saved anything. I added a guard in code that checks it.
+- An automated test found that the customer saw a total of $84, but the order was saved at $168. To the eye, the conversation looked perfect.
+- Even with a "SOLD OUT" label, it kept offering the product. It only stopped when I removed it from the list entirely.
+
+After four attempts, it passed 8 out of 8 test conversations.
+
+### What these agents taught me
+
+AI doesn't fail for lack of intelligence. It fails for lack of data and controls. A rule written in a prompt isn't enough: money and business rules must be decided and verified by code, not by the model. Without automated tests there is no trust, because "it looks fine" is not the same as "it works." And a well-built agent costs only cents per conversation.
 
 I realized my previous experience doesn't stay behind. On the contrary: understanding networks, data centers, storage, backup, virtualization, and security helps me see how the pieces connect in the cloud. And my pre-sales background gives me something many technical profiles don't have: the ability to explain what a solution is for, how much it costs, and what value it brings to a client.
 
 ## Where I'm going
 
-My goal for the next three months is to build five AI agents, each more complex than the last. The first, the research agent, has three phases: running locally, deploying on AWS with Lambda, API Gateway, and S3, and adding observability to measure what it does, how much it consumes, and how much it costs.
+My goal is to build five AI agents, each more complex than the last. Two are done and the third is in progress. Next, I'll deploy the ordering agent on AWS with Terraform and a message queue, so no order is ever lost even when something fails. For the last two I'm exploring an AI pre-sales team that drafts technical proposals, and small tools for everyday business tasks.
+
+I chose small-business use cases on purpose: they force me to solve real problems — messy human input, money that must be exact, rules that can't be broken, and costs that must stay low. Every agent is designed with the same questions I've always asked as an architect: is it reliable, is it secure, how much does it cost, and can I measure it?
+
+I also share the process in public, in Spanish, as **El Futuro con Alex**: what I build, what breaks, and what I learn. Explaining it to others is how I make sure I really understand it.
 
 I want to build a "T-shaped" profile: broad foundations in cloud, networking, data center, security, and cost, with deep expertise in AI agents on AWS. My goal is for my GitHub to show real, working, well-documented projects, and to be able to explain every decision I made.
 
