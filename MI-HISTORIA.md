@@ -4,7 +4,7 @@
 
 Me llamo Alejandro. Tengo 45 años y soy un profesional de tecnología cuya carrera se ha construido principalmente alrededor de redes, infraestructura y soluciones Cisco.
 
-A lo largo de mi carrera he trabajado como arquitecto de preventa de soluciones Cisco, un rol que me ha colocado entre dos mundos: el técnico y el humano. No se trata solo de conocer equipos, protocolos o arquitecturas, sino de entender lo que un cliente necesita, traducir esa necesidad en una solución tecnológica y ayudar a distintas personas a entenderla y a tomar decisiones sobre ella.
+A lo largo de mi carrera he trabajado como arquitecto de preventa en un partner de Cisco (un integrador que diseña y vende soluciones Cisco a empresas), un rol que me ha colocado entre dos mundos: el técnico y el humano. No se trata solo de conocer equipos, protocolos o arquitecturas, sino de entender lo que un cliente necesita, traducir esa necesidad en una solución tecnológica y ayudar a distintas personas a entenderla y a tomar decisiones sobre ella.
 
 Mi experiencia me ha permitido desarrollar habilidades tanto técnicas como de comunicación. He trabajado con equipos Cisco, diseñado soluciones, capacitado a otros y compartido conocimiento técnico, participado en proyectos de tecnología y acompañado a clientes en decisiones que muchas veces involucran tecnologías complejas.
 
@@ -30,7 +30,7 @@ En el camino también aprendí algo que va más allá del código. Cometí error
 
 ### Lo que he construido hasta ahora
 
-**1. Agente Investigador.** Decide por sí mismo qué buscar, hace varias búsquedas y escribe un informe en el que cada dato cita su fuente. Empezó en mi computadora y hoy corre en AWS con Lambda, API Gateway y S3. Revisar sus informes me dejó mi primera gran lección: si no obligas a una IA a citar cada dato y a decir "no encontré esto", rellena los huecos con información irrelevante.
+**1. Agente Investigador.** Decide por sí mismo qué buscar, hace varias búsquedas y escribe un informe con sus fuentes. Empezó en mi computadora y hoy corre en AWS con Lambda, API Gateway y S3. Revisar sus informes me dejó una gran lección: si no obligas a una IA a citar cada dato y a decir "no encontré esto", rellena los huecos con información irrelevante. Esa es su siguiente mejora.
 
 **2. Agente de Soporte Interno.** Responde preguntas de empleados usando los documentos de una empresa ficticia (vacaciones, viáticos, políticas) con RAG en Amazon Bedrock. Cita de qué documento sacó la respuesta y, cuando la respuesta no está ahí, dice "no lo sé" en lugar de inventar. Le hice un examen automático de 25 preguntas, incluidas preguntas trampa, y sacó 25/25. Para llegar ahí tuve que calibrar un umbral de confianza con datos reales, atrapar una pregunta trampa sobre sueldos que la IA casi contesta y encontrar una sola letra fuera de lugar en mi código que tiró todo el examen a cero.
 
@@ -39,6 +39,7 @@ En el camino también aprendí algo que va más allá del código. Cometí error
 - Sin catálogo, la IA inventaba productos que la tienda no vendía.
 - Le decía al cliente "tu pedido está confirmado" sin haber guardado nada. Puse una guardia en el código que lo revisa.
 - Una prueba automática encontró que el cliente veía un total de $84, pero el pedido se guardaba por $168. A ojo, la conversación se veía perfecta.
+- Olvidaba que ya había agregado un producto y lo volvía a agregar: la IA recuerda lo que dijo, no lo que hizo. Ahora el código lleva el pedido y se lo muestra en cada mensaje.
 - Aunque el producto decía "AGOTADO", lo seguía ofreciendo. Solo dejó de hacerlo cuando lo saqué por completo de la lista.
 
 Después de cuatro intentos, pasó 8 de 8 conversaciones de prueba.

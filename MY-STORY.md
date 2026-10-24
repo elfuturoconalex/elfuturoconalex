@@ -4,7 +4,7 @@
 
 My name is Alejandro. I'm 45 years old and a technology professional whose career has been built mainly around networking, infrastructure, and Cisco solutions.
 
-Throughout my career I've worked as a pre-sales architect for Cisco solutions, a role that has placed me between two worlds: the technical and the human. It's not only about knowing equipment, protocols, or architectures, but about understanding what a client needs, translating that need into a technology solution, and helping different people understand it and make decisions about it.
+Throughout my career I've worked as a pre-sales architect at a Cisco partner (an integrator that designs and sells Cisco solutions to companies), a role that has placed me between two worlds: the technical and the human. It's not only about knowing equipment, protocols, or architectures, but about understanding what a client needs, translating that need into a technology solution, and helping different people understand it and make decisions about it.
 
 My experience has allowed me to develop both technical and communication skills. I've worked with Cisco equipment, designed solutions, trained others and shared technical knowledge, taken part in technology projects, and supported clients through decisions that often involve complex technologies.
 
@@ -30,7 +30,7 @@ Along the way I also learned something beyond code. I made real mistakes — lik
 
 ### What I've built so far
 
-**1. Research Agent.** It decides on its own what to search for, runs several searches, and writes a report where every claim cites its source. It started on my computer and now runs on AWS with Lambda, API Gateway, and S3. Reviewing its reports taught me my first big lesson: if you don't force an AI to cite every fact and to say "I didn't find this," it fills the gaps with irrelevant information.
+**1. Research Agent.** It decides on its own what to search for, runs several searches, and writes a report with its sources. It started on my computer and now runs on AWS with Lambda, API Gateway, and S3. Reviewing its reports taught me a big lesson: if you don't force an AI to cite every fact and to say "I didn't find this," it fills the gaps with irrelevant information. That's its next improvement.
 
 **2. Internal Support Agent.** It answers employee questions using a fictional company's documents — vacation, travel expenses, policies — with RAG on Amazon Bedrock. It cites which document the answer came from, and when the answer isn't there, it says "I don't know" instead of inventing. I built an automated exam of 25 questions, including trick questions, and it scored 25/25. Getting there meant calibrating a confidence threshold with real data, catching a trick question about salaries that the AI almost answered, and hunting down a single misplaced letter in my code that dropped the whole exam to zero.
 
@@ -39,6 +39,7 @@ Along the way I also learned something beyond code. I made real mistakes — lik
 - Without a catalog, the AI invented products the store didn't sell.
 - It told customers "your order is confirmed" without having saved anything. I added a guard in code that checks it.
 - An automated test found that the customer saw a total of $84, but the order was saved at $168. To the eye, the conversation looked perfect.
+- It forgot it had already added an item and added it again: AI remembers what it said, not what it did. Now the code keeps the order and shows it to the model on every message.
 - Even with a "SOLD OUT" label, it kept offering the product. It only stopped when I removed it from the list entirely.
 
 After four attempts, it passed 8 out of 8 test conversations.
